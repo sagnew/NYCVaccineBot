@@ -1,0 +1,22 @@
+{
+  "name": "nycvaccinebot",
+  "version": "1.0.0",
+  "description": "A small Node.js tool to help at-risk people in my neighborhood receive notifications when new COVID-19 vaccine appointments open up at Javits Center. Built using Puppeteer and Twilio.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sagnew/NYCVaccineBot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sagnew/NYCVaccineBot/issues"
+  },
+  "homepage": "https://github.com/sagnew/NYCVaccineBot#readme",
+  "dependencies": {
+    "puppeteer": "^8.0.0"
+  }
+}
