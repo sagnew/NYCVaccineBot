@@ -28,8 +28,8 @@ const gatherSubscribers = async function() {
   const subscribers = await client.sync.services(process.env.TWILIO_SERVICE_SID)
     .syncMaps('MPd619fc22e4c14146b3656723855a7e4c')
     .syncMapItems
-    .list({ subscribed: 'yes' })
-  return subscribers;
+    .list();
+  return subscribers.filter(subscriber => subscriber.data.subscribed === 'yes');
 };
 
 // Takes an array of subscribers and sends a text message notification to all of them.
