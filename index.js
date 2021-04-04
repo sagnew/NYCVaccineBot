@@ -19,7 +19,8 @@ const updateLastUpdated = async function(latestUpdated) {
   const document = await client.sync.services(process.env.TWILIO_SERVICE_SID)
     .documents('updateLog')
     .update({data: { lastUpdated: latestUpdated }});
-  console.log(`Updated log: ${document}`);
+  console.log('Updated log:');
+  console.log(document.data);
 };
 
 // Gets a Twilio Sync Map object for all users who are subscribed for updates.
@@ -37,8 +38,10 @@ const notifySubscribers = async function(subscribers, messageBody) {
     const number = subscriber.key;
     return client.messages.create({ to: number, from: process.env.TWILIO_NUMBER, body: messageBody });
   });
-  const results = await Promise.all(tasks);
-  return results.map(result => result.sid);
+  const results = await Promise.allSettled(tasks);
+  return results.map(result => {
+    return { status: result.status, sid: result.value.sid };
+  });
 };
 
 (async () => {
