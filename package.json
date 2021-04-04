@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/sagnew/NYCVaccineBot#readme",
   "dependencies": {
-    "puppeteer": "^8.0.0"
+    "puppeteer": "^8.0.0",
+    "twilio": "^3.59.0"
   }
 }
