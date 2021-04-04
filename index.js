@@ -40,6 +40,9 @@ const notifySubscribers = async function(subscribers, messageBody) {
   });
   const results = await Promise.allSettled(tasks);
   return results.map(result => {
+    if (result.status === 'rejected') {
+      return { status: result.status, moreInfo: result.reason.moreInfo };
+    }
     return { status: result.status, sid: result.value.sid };
   });
 };
